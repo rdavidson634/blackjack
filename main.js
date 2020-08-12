@@ -15,30 +15,21 @@ const masterDeck = createDeck();
 
 
 // initialize state variables 
-let playerHand = null;
-let dealerHand = null;
 let playerAction = null;
-let dealerAction = null;
-let shuffledDeck;
-let handResult = null;
+let dealerAction = null;  
 
+let playerHand = [];
+let dealerHand = [];
 
-
-// initialize board
-
-// event handler for stand
+// event handlers
 const standBtn = document.getElementById('stand');
 standBtn.addEventListener('click', stand);
 
-// event handler for hit 
 const hitBtn = document.getElementById('hit');
 hitBtn.addEventListener('click', hit);
 
-// event handler for dealing
-// const dealBtn = document.getElementById('deal');
-// dealBtn.addEventListener('click', );
-
-
+const dealBtn = document.getElementById('deal');
+dealBtn.addEventListener('click', createDeck);
 
 // shuffling the deck
 function shuffleDeck () {
@@ -46,20 +37,15 @@ function shuffleDeck () {
   const tempDeck = [...masterDeck];
   shuffledDeck = [];
   while (tempDeck.length) {
-    // Get a random index for a card still in the tempDeck
     const rndIdx = Math.floor(Math.random() * tempDeck.length);
-    // Note the [0] after splice - this is because splice always returns an array and we just want the card object in that array
     shuffledDeck.push(tempDeck.splice(rndIdx, 1)[0]);
   }
   return shuffledDeck;
 }
 
-
-// console.log(shuffledDeck);
-
 // creating the deck 
 function createDeck () {
-  const deck = [];
+  var deck = [];
   for(var i = 0; i < cardSuits.length; i++) {
     for(var x = 0; x < cardValues.length; x++) {
       var card = {value: cardValues[x], suit: cardSuits[i]};
@@ -67,35 +53,38 @@ function createDeck () {
     }
   }
   return deck;
-  
 }
 
-createDeck();
-console.log(masterDeck);
-shuffleDeck();
-console.log(shuffledDeck)
+  createDeck();
+// console.log(masterDeck);
+  shuffleDeck(masterDeck);
+// console.log(shuffledDeck)
 
 // deal player cards function
 function dealPlayerCards () {
-    for(var i = 0; i < 2; i++) {
-      var card = shuffledDeck.pop();
-      playerHand.push(card);
-    }
+  for(var i = 0; i < 2; i++) {
+    var card = shuffledDeck.pop();
+    playerHand.push(card);
   }
-  dealPlayerCards();
-  console.log(playerHand);
-  
-  // deal dealer cards function
-  function dealDealerCards () {
-     for(var i = 0; i < 2; i++) {
-      var card = shuffledDeck.pop();
-      dealerHand.push(card);
-    }
-  }
-  dealDealerCards();
-  console.log(dealerHand);
-  
+}
+dealPlayerCards();
+console.log(playerHand);
 
+// deal dealer cards function
+function dealDealerCards () {
+  for(var i = 0; i < 2; i++) {
+    var card = shuffledDeck.pop();
+    dealerHand.push(card);
+  }
+}
+dealDealerCards();
+console.log(dealerHand);
+
+// hit function - pop a card from shuffledDeck to player
+function hit () {
+  var card = shuffledDeck.pop();
+  playerHand.push(card)
+}
 
 
 // 
