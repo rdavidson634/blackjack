@@ -75,8 +75,26 @@ console.log(masterDeck);
 shuffleDeck();
 console.log(shuffledDeck)
 
-
-
+// deal player cards function
+function dealPlayerCards () {
+    for(var i = 0; i < 2; i++) {
+      var card = shuffledDeck.pop();
+      playerHand.push(card);
+    }
+  }
+  dealPlayerCards();
+  console.log(playerHand);
+  
+  // deal dealer cards function
+  function dealDealerCards () {
+     for(var i = 0; i < 2; i++) {
+      var card = shuffledDeck.pop();
+      dealerHand.push(card);
+    }
+  }
+  dealDealerCards();
+  console.log(dealerHand);
+  
 
 
 
