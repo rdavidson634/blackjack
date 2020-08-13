@@ -38,21 +38,27 @@ function init () {
 init();
 
 
-function renderPlayerhand () {
-
+function renderhands (hand, container) {
+  container.innerHTML = '';
+  let HTMLcards = ``;
+  if (container === DealerHandContainer && hand.length === 2) {
+    hand.forEach(function(card, index) {
+      if (index === 1 {
+        cards += `<div class="dealer-card-two"></div>`;
+      } else {
+        HTMLcards += 
+      }
+    })
+  }
 }
 
-function renderDealerhand () {
-
-}
 
 function renderHit () {
 
 }
 
 function renderScores () {
-
-}
+  
 
 function renderEndGameMessage () {
 
