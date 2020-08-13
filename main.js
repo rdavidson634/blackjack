@@ -16,6 +16,8 @@ let shuffledDeck;
 const standBtn = document.getElementById('stand');
 const hitBtn = document.getElementById('hit');
 const dealBtn = document.getElementById('deal');
+const playerHandContainer = document.getElementById('player-hand-container');
+const DealerHandContainer = document.getElementById('dealer-hand-container');
 
 // event listener
 standBtn.addEventListener('click', stand);

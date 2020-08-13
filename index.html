@@ -5,22 +5,21 @@
     <meta name="viewport" content="width=device-width">
     <title>repl.it</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
+    <script defer src="script.js"></script>
   </head>
   <body>
     <header>
       <h1><bold>BLACKJACK</bold></h1>
     </header>
     <div class="main">
-  
+      
+      <div class="dealer">
+        <div id="dealer-score"></div>
+          <div id="dealer-hand-container">
+            <div class="dealer-card-one"></div>
+            <div class="dealer-card-two"></div>
+          </div>
       </div>
-      <div class="table">
-    
-      <div class="dealer-hand">
-        <p class="dealer-card"></p>
-        <p class="dealer-card"></p>
-      </div>
-    
-      <div class="deck"></div>
       
       <div class="actions">
         <button id="deal">DEAL</button>
@@ -28,14 +27,17 @@
         <button id="hit" type="button">HIT</button>
       </div>
       
-      <div class="player-hand">
-        <p class="player-card"></p>
-        <p class="player-card"></p>
+      <div class="player">
+        <div id="player-score"></div>
+          <div id="player-hand-container">
+            <div class="player-card"></div>
+            <div class="player-card"></div>
+          </div>
       </div>
     
     </div>
 
       
-    <script src="script.js"></script>
+    
   </body>
 </html>
