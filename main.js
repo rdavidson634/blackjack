@@ -11,13 +11,14 @@ let playerScore = 0;
 let playerHand = [];
 let dealerHand = [];
 let shuffledDeck;
+let facedown;
 
 // cached element references
 const standBtn = document.getElementById('stand');
 const hitBtn = document.getElementById('hit');
 const dealBtn = document.getElementById('deal');
-const playerHandContainer = document.getElementById('player-hand-container');
-const DealerHandContainer = document.getElementById('dealer-hand-container');
+const playerHandContainer = document.getElementById('playerHand');
+const dealerHandContainer = document.getElementById('dealerHand');
 
 // event listener
 standBtn.addEventListener('click', stand);
@@ -33,24 +34,43 @@ function init () {
   shuffleDeck(masterDeck);
   dealPlayerCards();
   dealDealerCards();
+  render()
+}
+
+function render () {
+  showDealerhand();
+  showPlayerHand()
 }
 
 init();
 
 
-// function renderhands (hand, container) {
-//   container.innerHTML = '';
-//   let HTMLcards = ``;
-//   if (container === DealerHandContainer && hand.length === 2) {
-//     hand.forEach(function(card, index) {
-//       if (index === 1 {
-//         cards += `<div class="dealer-card-two"></div>`;
-//       } else {
-//         HTMLcards += 
-//       }
-//     })
-//   }
-// }
+
+
+
+function showDealerhand () {
+  dealerHandContainer.innerHTML = "";
+  dealerHand.forEach(function(card, idx) {
+    let x = `<div class = "card ${card.value}"></div>`
+    if (idx === 1 && facedown) {
+    x = `<div class = "card back-blue"></div>`
+    facedown = false;
+    }
+  dealerHandContainer.innerHTML += x;
+  })
+}
+
+function showPlayerHand () {
+  playerHandContainer.innerHTML = "";
+  playerHand.forEach(function(card, idx) {
+    let x = `<div class = "card ${card.value}"></div>`
+    playerHandContainer.innerHTML += x;
+  })
+}
+
+
+
+
 
 
 // function renderHit () {
