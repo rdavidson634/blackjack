@@ -1,33 +1,30 @@
-// constants
 
+// constants
 const cardSuits = ['s', 'c', 'd', 'h'];
 const cardValues = ['02', '03', '04', '05', '06', '07', '08', '09', '10', 'J', 'Q', 'K', 'A'];
 
 // masterDeck
 const masterDeck = createDeck();
-
-// variables
-  // player decision/action - true or false / stand or hit
-  // dealer decision/action - true or false / stand or hit
-  // player 1 hand - array
-  // dealer hand - array
-  // shuffled deck
-
+let shuffledDeck;
 
 // initialize state variables 
+
 let playerAction = null;
 let dealerAction = null;  
-
+let dealerScore = 0;
+let playerScore = 0;
 let playerHand = [];
 let dealerHand = [];
 
-// event handlers
+// event handler for stand
 const standBtn = document.getElementById('stand');
 standBtn.addEventListener('click', stand);
 
+// event handler for hit 
 const hitBtn = document.getElementById('hit');
 hitBtn.addEventListener('click', hit);
 
+//event handler for dealing
 const dealBtn = document.getElementById('deal');
 dealBtn.addEventListener('click', createDeck);
 
@@ -80,11 +77,75 @@ function dealDealerCards () {
 dealDealerCards();
 console.log(dealerHand);
 
+dealerScore = addCardValues(dealerHand);
+console.log(dealerScore);
+playerScore = addCardValues(playerHand);
+console.log(playerScore);
+
+// totaling up the hand
+function addCardValues (arr) {
+  let score = 0;
+  arr.forEach(function(card) {
+    if (card.value === 'K' || card.value === 'Q' || card.value === 'J') {
+      score += 10
+    } else if (card.value === 'A') {
+        score += 1
+    } else {
+      score += Number(card.value)
+    }
+  })
+  if (score <= 11) {
+    let hasAce = arr.some(function(card) {
+      return card.value === 'A' 
+    })
+    if (hasAce) {
+      score += 10
+    }
+  }
+  return score;
+}
+
+// game logic
+function endGame() {
+  if (playerScore === 21) {
+    console.log (`Blackjack! Player wins!`);
+    playGame();
+  } 
+  if (playerScore > 21) {
+    console.log (`Over 21! Bust!`);
+    playGame();
+  }
+  if (dealerScore === 21) {
+    console.log (`Blackjack! Dealer wins!`);
+    playGame();
+  }
+  if (dealerScore > 21) {
+    console.log (`Dealer busted. You win!`)
+  }
+  if (playerScore === dealerScore) {
+    console.log (`Tie`);
+  }
+}
+
+// dealer hit
+function dealerHit () {
+  var card = shuffledDeck.pop();
+  dealerHand.push(card) 
+}
 // hit function - pop a card from shuffledDeck to player
 function hit () {
   var card = shuffledDeck.pop();
-  playerHand.push(card)
+  playerHand.push(card);
 }
+
+// stand function which will just invoke the dealerHit function
+function stand () {
+  while (dealerScore < 17) {
+    dealerHit();
+  }
+  endGame();
+}
+
 
 
 // 
