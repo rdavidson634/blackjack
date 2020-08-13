@@ -316,7 +316,7 @@
 .card.back-blue {
   background-image: url("../images/backs/blue.svg"); }
 
-.dealer-hand-container.dealer-card-two {
+.card.back-red  {
   background-image: url("../images/backs/red.svg"); }
 
 /* Re-orients the cards for different directions. While

@@ -1,11 +1,9 @@
-
-// constants
+/*----- constants -----*/
 const cardSuits = ['s', 'c', 'd', 'h'];
 const cardValues = ['02', '03', '04', '05', '06', '07', '08', '09', '10', 'J', 'Q', 'K', 'A'];
-
 const masterDeck = createDeck();
 
-// app state variables
+/*----- app's state (variables) -----*/
 let dealerScore = 0;
 let playerScore = 0;
 let playerHand = [];
@@ -13,77 +11,19 @@ let dealerHand = [];
 let shuffledDeck;
 let facedown;
 
-// cached element references
+/*----- cached element references -----*/
 const standBtn = document.getElementById('stand');
 const hitBtn = document.getElementById('hit');
 const dealBtn = document.getElementById('deal');
-const playerHandContainer = document.getElementById('playerHand');
-const dealerHandContainer = document.getElementById('dealerHand');
+let playerHandContainer = document.getElementById('playerHand');
+let dealerHandContainer = document.getElementById('dealerHand');
 
-// event listener
+/*----- event listeners -----*/
 standBtn.addEventListener('click', stand);
 hitBtn.addEventListener('click', hit);
 dealBtn.addEventListener('click', init);
 
-// functions
-function init () {
-  dealerScore = 0;
-  playerScore = 0;
-  playerHand = [];
-  dealerHand = [];
-  shuffleDeck(masterDeck);
-  dealPlayerCards();
-  dealDealerCards();
-  render()
-}
-
-function render () {
-  showDealerhand();
-  showPlayerHand()
-}
-
-init();
-
-
-
-
-
-function showDealerhand () {
-  dealerHandContainer.innerHTML = "";
-  dealerHand.forEach(function(card, idx) {
-    let x = `<div class = "card ${card.value}"></div>`
-    if (idx === 1 && facedown) {
-    x = `<div class = "card back-blue"></div>`
-    facedown = false;
-    }
-  dealerHandContainer.innerHTML += x;
-  })
-}
-
-function showPlayerHand () {
-  playerHandContainer.innerHTML = "";
-  playerHand.forEach(function(card, idx) {
-    let x = `<div class = "card ${card.value}"></div>`
-    playerHandContainer.innerHTML += x;
-  })
-}
-
-
-
-
-
-
-// function renderHit () {
-
-// }
-
-// function renderScores () {
-  
-// }
-
-// function renderEndGameMessage () {
-
-// }
+/*----- functions -----*/
 
 // shuffling the deck
 function shuffleDeck () {
@@ -95,7 +35,6 @@ function shuffleDeck () {
   }
   return shuffledDeck;
 }
-
 // creating the deck 
 function createDeck () {
   var deck = [];
@@ -108,6 +47,9 @@ function createDeck () {
   return deck;
 }
 
+init();
+
+
 // deal player cards function
 function dealPlayerCards () {
   for(var i = 0; i < 2; i++) {
@@ -115,7 +57,6 @@ function dealPlayerCards () {
     playerHand.push(card);
   }
 }
-
 // deal dealer cards function
 function dealDealerCards (arr) {
   for(var i = 0; i < 2; i++) {
@@ -123,13 +64,26 @@ function dealDealerCards (arr) {
     dealerHand.push(card);
   }
 }
-
-dealerScore = addCardValues(dealerHand);
-console.log(dealerScore);
-playerScore = addCardValues(playerHand);
-console.log(playerScore);
-
-
+// showing dealer hand in html
+function showDealerhand () {
+  dealerHandContainer.innerHTML = "";
+  dealerHand.forEach(function(card, idx) {
+    let x = `<div class = "card ${card.face}"></div>`
+    if (idx === 1 && facedown) {
+    x = `<div class = "card back-blue"></div>`
+    facedown = false;
+    }
+  dealerHandContainer.innerHTML += x;
+  })
+}
+//show player hand in html
+function showPlayerHand () {
+  playerHandContainer.innerHTML = "";
+  playerHand.forEach(function(card, idx) {
+    let x = `<div class = "card ${card.face}"></div>`
+    playerHandContainer.innerHTML += x;
+  })
+}
 // totaling up the hand
 function addCardValues (arr) {
   let score = 0;
@@ -152,45 +106,37 @@ function addCardValues (arr) {
   }
   return score;
 }
-
 // game logic
 function endGame() {
   if (playerScore === 21) {
     console.log (`Blackjack! Player wins!`);
-    
   } 
   if (playerScore > 21) {
     console.log (`Over 21! Bust!`);
-    
   }
   if (dealerScore === 21) {
     console.log (`Blackjack! Dealer wins!`);
-    
   }
   if (dealerScore > 21) {
     console.log (`Dealer busted. You win!`);
-    
   }
   if (playerScore === dealerScore) {
     console.log (`Tie`);
-   
   }
   if (playerScore > dealerScore && playerScore <= 21) {
     console.log (`Player wins!`);
-    
   }
   if (playerScore < dealerScore && dealerScore <= 21) {
     console.log (`Dealer wins!`);
-    
   }
 }
-
 // dealer hit
 function dealerHit () {
   var card = shuffledDeck.pop();
   dealerHand.push(card);
   dealerScore = addCardValues(dealerHand);
     if (dealerScore >= 21) {
+      showDealerhand();
       endGame();
   }
 }
@@ -199,18 +145,36 @@ function hit () {
   var card = shuffledDeck.pop();
   playerHand.push(card);
   playerScore = addCardValues(playerHand);
-  
+    showPlayerHand()
     if (playerScore >= 21) {
       endGame();
   }
 }
-
 // stand function which will just invoke the dealerHit function
 function stand () {
   while (dealerScore < 17) {
     dealerHit();
   }
+  render();
   endGame();
+}
+//rendor
+function render () {
+  showDealerhand();
+  showPlayerHand()
+}
+//initializing
+function init () {
+  dealerScore = 0;
+  playerScore = 0;
+  playerHand = [];
+  dealerHand = [];
+  shuffleDeck(masterDeck);
+  dealPlayerCards();
+  playerScore = addCardValues(playerHand);
+  dealDealerCards();
+  dealerScore = addCardValues(dealerHand);
+  render()
 }
 
 
@@ -237,9 +201,7 @@ function stand () {
   //   add/pop another card from  the shuffled array into player 1 hand array
   // }
 
-  // deal() {
-
-  // }
+  
 
     // if dealer hits, pop another card from the shuffled array
       // if below 17, hit
@@ -270,5 +232,10 @@ function stand () {
 
 
     
+
+
+
+
+ 
 
 
