@@ -35,22 +35,26 @@ function init () {
 
 init();
 
-function renderDeck() {
-  document.querySelector("deck").innerHTML = "";
 
-} 
+function renderPlayerhand () {
 
-function renderCards (card) {
-var hand = document.getElementById(player-hand);
-hand.appendChild(getCardImage(card));
 }
 
-function getCardImage (card) {
-  var cardEl = document.createElement('div');
-  cardEl.className = 'card'
-  return cardEl
+function renderDealerhand () {
+
 }
 
+function renderHit () {
+
+}
+
+function renderScores () {
+
+}
+
+function renderEndGameMessage () {
+
+}
 
 // shuffling the deck
 function shuffleDeck () {
