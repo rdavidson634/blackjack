@@ -26,7 +26,7 @@ hitBtn.addEventListener('click', hit);
 
 //event handler for dealing
 const dealBtn = document.getElementById('deal');
-dealBtn.addEventListener('click', createDeck);
+dealBtn.addEventListener('click', resetGame);
 
 // shuffling the deck
 function shuffleDeck () {
@@ -109,27 +109,31 @@ function addCardValues (arr) {
 function endGame() {
   if (playerScore === 21) {
     console.log (`Blackjack! Player wins!`);
-    playGame();
+    
   } 
   if (playerScore > 21) {
     console.log (`Over 21! Bust!`);
-    playGame();
+    
   }
   if (dealerScore === 21) {
     console.log (`Blackjack! Dealer wins!`);
-    playGame();
+    
   }
   if (dealerScore > 21) {
-    console.log (`Dealer busted. You win!`)
+    console.log (`Dealer busted. You win!`);
+    
   }
   if (playerScore === dealerScore) {
     console.log (`Tie`);
+   
   }
   if (playerScore > dealerScore && playerScore <= 21) {
-    console.log (`Player wins!`)
+    console.log (`Player wins!`);
+    
   }
   if (playerScore < dealerScore && dealerScore <= 21) {
-    console.log (`Dealer wins!`)
+    console.log (`Dealer wins!`);
+    
   }
 }
 
@@ -142,7 +146,6 @@ function dealerHit () {
       endGame();
   }
 }
-
 // hit function - pop a card from shuffledDeck to player
 function hit () {
   var card = shuffledDeck.pop();
@@ -161,6 +164,16 @@ function stand () {
   endGame();
 }
 
+function resetGame () {  
+  dealerScore = 0;
+  playerScore = 0;
+  playerHand = [];
+  dealerHand = [];
+  shuffleDeck(masterDeck);
+  dealPlayerCards();
+  dealDealerCards();
+
+}
 
 
 
