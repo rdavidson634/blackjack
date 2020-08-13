@@ -38,31 +38,32 @@ function init () {
 init();
 
 
-function renderhands (hand, container) {
-  container.innerHTML = '';
-  let HTMLcards = ``;
-  if (container === DealerHandContainer && hand.length === 2) {
-    hand.forEach(function(card, index) {
-      if (index === 1 {
-        cards += `<div class="dealer-card-two"></div>`;
-      } else {
-        HTMLcards += 
-      }
-    })
-  }
-}
+// function renderhands (hand, container) {
+//   container.innerHTML = '';
+//   let HTMLcards = ``;
+//   if (container === DealerHandContainer && hand.length === 2) {
+//     hand.forEach(function(card, index) {
+//       if (index === 1 {
+//         cards += `<div class="dealer-card-two"></div>`;
+//       } else {
+//         HTMLcards += 
+//       }
+//     })
+//   }
+// }
 
 
-function renderHit () {
+// function renderHit () {
 
-}
+// }
 
-function renderScores () {
+// function renderScores () {
   
+// }
 
-function renderEndGameMessage () {
+// function renderEndGameMessage () {
 
-}
+// }
 
 // shuffling the deck
 function shuffleDeck () {
