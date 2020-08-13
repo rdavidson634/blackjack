@@ -64,23 +64,24 @@ function dealDealerCards (arr) {
     dealerHand.push(card);
   }
 }
+// dealerHand = dealerHandContainer
 // showing dealer hand in html
 function showDealerhand () {
-  dealerHandContainer.innerHTML = "";
+  console.log(dealerHand)
+  dealerHandContainer.innerHTML = '';
   dealerHand.forEach(function(card, idx) {
-    let x = `<div class = "card ${card.face}"></div>`
-    if (idx === 1 && facedown) {
+    let x = `<div class = "card ${card.suit + card.value}"></div>`
+    if (idx === 1) {
     x = `<div class = "card back-blue"></div>`
-    facedown = false;
-    }
+   }
   dealerHandContainer.innerHTML += x;
   })
 }
 //show player hand in html
 function showPlayerHand () {
-  playerHandContainer.innerHTML = "";
+  playerHandContainer.innerHTML = '';
   playerHand.forEach(function(card, idx) {
-    let x = `<div class = "card ${card.face}"></div>`
+    let x = `<div class = "card ${card.suit + card.value}"></div>`
     playerHandContainer.innerHTML += x;
   })
 }
@@ -237,5 +238,3 @@ function init () {
 
 
  
-
-
