@@ -125,17 +125,32 @@ function endGame() {
   if (playerScore === dealerScore) {
     console.log (`Tie`);
   }
+  if (playerScore > dealerScore && playerScore <= 21) {
+    console.log (`Player wins!`)
+  }
+  if (playerScore < dealerScore && dealerScore <= 21) {
+    console.log (`Dealer wins!`)
+  }
 }
 
 // dealer hit
 function dealerHit () {
   var card = shuffledDeck.pop();
-  dealerHand.push(card) 
+  dealerHand.push(card);
+  dealerScore = addCardValues(dealerHand);
+    if (dealerScore >= 21) {
+      endGame();
+  }
 }
+
 // hit function - pop a card from shuffledDeck to player
 function hit () {
   var card = shuffledDeck.pop();
   playerHand.push(card);
+  playerScore = addCardValues(playerHand);
+    if (playerScore >= 21) {
+      endGame();
+  }
 }
 
 // stand function which will just invoke the dealerHit function
@@ -145,6 +160,7 @@ function stand () {
   }
   endGame();
 }
+
 
 
 
