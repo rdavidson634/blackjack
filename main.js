@@ -54,7 +54,7 @@ init();
 
 // deal player cards function
 function dealPlayerCards () {
-  let gameResult = '';
+  gameResult = '';
   for(var i = 0; i < 2; i++) {
     var card = shuffledDeck.pop();
     playerHand.push(card);
@@ -167,6 +167,8 @@ function render () {
   showDealerhand();
   showPlayerHand()
 }
+
+
 //initializing
 function init () {
   dealerScore = 0;
