@@ -114,7 +114,7 @@ function endGame() {
     gameResult.innerHTML = `Blackjack! Player wins!`;
   } 
   if (playerScore > 21) {
-    gameResult.innerHTML = `Over 21! Bust!`;
+    gameResult.innerHTML = `Over 21! Bust! Dealer has ${dealerScore}`;
   }
   if (dealerScore === 21) {
     gameResult.innerHTML = `Blackjack! Dealer wins!`;
@@ -123,7 +123,7 @@ function endGame() {
     gameResult.innerHTML = `Dealer busted. You win!`;
   }
   if (playerScore === dealerScore) {
-    gameResult.innerHTML = `Tie`;
+    gameResult.innerHTML = `Tie. You both have ${playerScore}`;
   }
   if (playerScore > dealerScore && playerScore < 21) {
     gameResult.innerHTML = `Player wins!`;
