@@ -111,25 +111,25 @@ function addCardValues (arr) {
 // game logic
 function endGame() {
   if (playerScore === 21) {
-    gameResult.innerText = `Blackjack! Player wins!`;
+    gameResult.innerHTML = `Blackjack! Player wins!`;
   } 
   if (playerScore > 21) {
-    gameResult.innerText = `Over 21! Bust!`;
+    gameResult.innerHTML = `Over 21! Bust!`;
   }
   if (dealerScore === 21) {
-    gameResult.innerText = `Blackjack! Dealer wins!`;
+    gameResult.innerHTML = `Blackjack! Dealer wins!`;
   }
   if (dealerScore > 21) {
-    gameResult.innerText = `Dealer busted. You win!`;
+    gameResult.innerHTML = `Dealer busted. You win!`;
   }
   if (playerScore === dealerScore) {
-    gameResult.innerText = `Tie`;
+    gameResult.innerHTML = `Tie`;
   }
   if (playerScore > dealerScore && playerScore < 21) {
-    gameResult.innerText = `Player wins!`;
+    gameResult.innerHTML = `Player wins!`;
   }
   if (playerScore < dealerScore && dealerScore < 21) {
-    gameResult.innerText = `Dealer wins!`;
+    gameResult.innerHTML = `Dealer wins!`;
   }
 }
 // dealer hit
