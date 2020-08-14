@@ -11,6 +11,7 @@ let dealerHand = [];
 let shuffledDeck;
 
 
+
 /*----- cached element references -----*/
 const standBtn = document.getElementById('stand');
 const hitBtn = document.getElementById('hit');
@@ -53,6 +54,7 @@ init();
 
 // deal player cards function
 function dealPlayerCards () {
+  let gameResult = '';
   for(var i = 0; i < 2; i++) {
     var card = shuffledDeck.pop();
     playerHand.push(card);
