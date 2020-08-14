@@ -54,7 +54,6 @@ init();
 
 // deal player cards function
 function dealPlayerCards () {
-  gameResult = '';
   for(var i = 0; i < 2; i++) {
     var card = shuffledDeck.pop();
     playerHand.push(card);
@@ -168,13 +167,13 @@ function render () {
   showPlayerHand()
 }
 
-
 //initializing
 function init () {
   dealerScore = 0;
   playerScore = 0;
   playerHand = [];
   dealerHand = [];
+  gameResult.innerHTML = '';
   shuffleDeck(masterDeck);
   dealPlayerCards();
   playerScore = addCardValues(playerHand);
