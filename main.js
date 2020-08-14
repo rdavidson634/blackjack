@@ -9,11 +9,6 @@ let playerScore = 0;
 let playerHand = [];
 let dealerHand = [];
 let shuffledDeck;
-<<<<<<< HEAD
-
-
-=======
->>>>>>> master
 
 /*----- cached element references -----*/
 const standBtn = document.getElementById('stand');
