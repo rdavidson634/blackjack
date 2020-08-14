@@ -162,9 +162,8 @@ function stand () {
 }
 //rendor
 function render () {
-  showDealerhand();
-  turnOverDealerCard();
- 
+  showPlayerHand();
+  showDealerhand()
 }
 
 //initializing
