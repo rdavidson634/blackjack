@@ -117,19 +117,19 @@ function endGame() {
     gameResult.innerHTML = `Over 21! Bust! Dealer has ${dealerScore}`;
   }
   if (dealerScore === 21) {
-    gameResult.innerHTML = `Blackjack! Dealer wins!`;
+    gameResult.innerHTML = `Blackjack! Dealer has 21!`;
   }
   if (dealerScore > 21) {
-    gameResult.innerHTML = `Dealer busted. You win!`;
+    gameResult.innerHTML = `Dealer busted with ${dealerScore}. You win!`;
   }
   if (playerScore === dealerScore) {
     gameResult.innerHTML = `Tie. You both have ${playerScore}`;
   }
   if (playerScore > dealerScore && playerScore < 21) {
-    gameResult.innerHTML = `Player wins!`;
+    gameResult.innerHTML = `Player wins! Dealer: ${dealerScore} Player: ${playerScore}`;
   }
   if (playerScore < dealerScore && dealerScore < 21) {
-    gameResult.innerHTML = `Dealer wins!`;
+    gameResult.innerHTML = `Dealer wins! Dealer: ${dealerScore} Player: ${playerScore}`;;
   }
 }
 // dealer hit
@@ -162,8 +162,8 @@ function stand () {
 }
 //rendor
 function render () {
+  showDealerhand();
   showPlayerHand();
-  showDealerhand()
 }
 
 //initializing
@@ -239,4 +239,3 @@ function init () {
 
 
 
- 
