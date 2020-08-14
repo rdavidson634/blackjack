@@ -129,7 +129,7 @@ function endGame() {
     gameResult.innerHTML = `Player wins! Dealer: ${dealerScore} Player: ${playerScore}`;
   }
   if (playerScore < dealerScore && dealerScore < 21) {
-    gameResult.innerHTML = `Dealer wins! Dealer: ${dealerScore} Player: ${playerScore}`;;
+    gameResult.innerHTML = `Dealer wins! Dealer: ${dealerScore} Player: ${playerScore}`;
   }
 }
 // dealer hit
@@ -164,6 +164,8 @@ function stand () {
 function render () {
   showDealerhand();
   showPlayerHand();
+  playerScore = addCardValues(playerHand);
+  dealerScore = addCardValues(dealerHand);
 }
 
 //initializing
