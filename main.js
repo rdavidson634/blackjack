@@ -17,6 +17,7 @@ const hitBtn = document.getElementById('hit');
 const dealBtn = document.getElementById('deal');
 let playerHandContainer = document.getElementById('playerHand');
 let dealerHandContainer = document.getElementById('dealerHand');
+let gameResult = document.getElementById('gameResult');
 
 /*----- event listeners -----*/
 standBtn.addEventListener('click', stand);
@@ -110,25 +111,25 @@ function addCardValues (arr) {
 // game logic
 function endGame() {
   if (playerScore === 21) {
-    console.log (`Blackjack! Player wins!`);
+    gameResult.innerText = `Blackjack! Player wins!`;
   } 
   if (playerScore > 21) {
-    console.log (`Over 21! Bust!`);
+    gameResult.innerText = `Over 21! Bust!`;
   }
   if (dealerScore === 21) {
-    console.log (`Blackjack! Dealer wins!`);
+    gameResult.innerText = `Blackjack! Dealer wins!`;
   }
   if (dealerScore > 21) {
-    console.log (`Dealer busted. You win!`);
+    gameResult.innerText = `Dealer busted. You win!`;
   }
   if (playerScore === dealerScore) {
-    console.log (`Tie`);
+    gameResult.innerText = `Tie`;
   }
-  if (playerScore > dealerScore && playerScore <= 21) {
-    console.log (`Player wins!`);
+  if (playerScore > dealerScore && playerScore < 21) {
+    gameResult.innerText = `Player wins!`;
   }
-  if (playerScore < dealerScore && dealerScore <= 21) {
-    console.log (`Dealer wins!`);
+  if (playerScore < dealerScore && dealerScore < 21) {
+    gameResult.innerText = `Dealer wins!`;
   }
 }
 // dealer hit
