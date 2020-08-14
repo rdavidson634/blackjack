@@ -164,18 +164,9 @@ function stand () {
 function render () {
   showDealerhand();
   turnOverDealerCard();
-  showPlayerHand()
+ 
 }
-//show dealer cards and total
-function turnOverDealerCard () {
-  dealerHandContainer.innerHTML = '';
-  dealerHand.forEach(function(card, idx) {
-    if (idx === 1) {
-    x = `<div class = "card ${card.suit + card.value}"></div>`
-   }
-  dealerHandContainer.innerHTML += x;
-  })
-}
+
 //initializing
 function init () {
   dealerScore = 0;
@@ -190,7 +181,6 @@ function init () {
   dealerScore = addCardValues(dealerHand);
   render()
 }
-
 
 
 // 
