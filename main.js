@@ -10,6 +10,7 @@ let playerHand = [];
 let dealerHand = [];
 let shuffledDeck;
 
+
 /*----- cached element references -----*/
 const standBtn = document.getElementById('stand');
 const hitBtn = document.getElementById('hit');
@@ -63,7 +64,6 @@ function dealDealerCards (arr) {
     dealerHand.push(card);
   }
 }
-// dealerHand = dealerHandContainer
 // showing dealer hand in html
 function showDealerhand () {
   dealerHandContainer.innerHTML = '';
@@ -174,8 +174,8 @@ function init () {
   gameResult.innerHTML = '';
   shuffleDeck(masterDeck);
   dealPlayerCards();
-  playerScore = addCardValues(playerHand);
   dealDealerCards();
+  playerScore = addCardValues(playerHand);
   dealerScore = addCardValues(dealerHand);
   render()
 }
