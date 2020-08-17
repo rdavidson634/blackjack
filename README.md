@@ -21,7 +21,7 @@ HTML
 CSS
 source: imgur.com
 
-<blockquote class="imgur-embed-pub" lang="en" data-id="y608YA9"><a href="//imgur.com/y608YA9"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+<a href="https://imgur.com/y608YA9"><img src="https://i.imgur.com/y608YA9.png" title="source: imgur.com" /></a>
 
 Link and Instructions: https://rdavidson634.github.io/blackjack/
 
