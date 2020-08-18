@@ -16,6 +16,7 @@ const hitBtn = document.getElementById('hit');
 const dealBtn = document.getElementById('deal');
 let playerHandContainer = document.getElementById('playerHand');
 let dealerHandContainer = document.getElementById('dealerHand');
+let gameResult = document.getElementById('gameResult');
 
 /*----- event listeners -----*/
 standBtn.addEventListener('click', stand);
@@ -65,7 +66,6 @@ function dealDealerCards (arr) {
 // dealerHand = dealerHandContainer
 // showing dealer hand in html
 function showDealerhand () {
-  console.log(dealerHand)
   dealerHandContainer.innerHTML = '';
   dealerHand.forEach(function(card, idx) {
     let x = `<div class = "card ${card.suit + card.value}"></div>`
@@ -108,25 +108,25 @@ function addCardValues (arr) {
 // game logic
 function endGame() {
   if (playerScore === 21) {
-    console.log (`Blackjack! Player wins!`);
+    gameResult.innerHTML = `Blackjack! Player wins!`;
   } 
   if (playerScore > 21) {
-    console.log (`Over 21! Bust!`);
+    gameResult.innerHTML = `Over 21! Bust! Dealer has ${dealerScore}`;
   }
   if (dealerScore === 21) {
-    console.log (`Blackjack! Dealer wins!`);
+    gameResult.innerHTML = `Blackjack! Dealer has 21!`;
   }
   if (dealerScore > 21) {
-    console.log (`Dealer busted. You win!`);
+    gameResult.innerHTML = `Dealer busted with ${dealerScore}. You win!`;
   }
   if (playerScore === dealerScore) {
-    console.log (`Tie`);
+    gameResult.innerHTML = `Tie. You both have ${playerScore}`;
   }
-  if (playerScore > dealerScore && playerScore <= 21) {
-    console.log (`Player wins!`);
+  if (playerScore > dealerScore && playerScore < 21) {
+    gameResult.innerHTML = `Player wins! Dealer: ${dealerScore} Player: ${playerScore}`;
   }
-  if (playerScore < dealerScore && dealerScore <= 21) {
-    console.log (`Dealer wins!`);
+  if (playerScore < dealerScore && dealerScore < 21) {
+    gameResult.innerHTML = `Dealer wins! Dealer: ${dealerScore} Player: ${playerScore}`;
   }
 }
 // dealer hit
@@ -160,14 +160,18 @@ function stand () {
 //rendor
 function render () {
   showDealerhand();
-  showPlayerHand()
+  showPlayerHand();
+  playerScore = addCardValues(playerHand);
+  dealerScore = addCardValues(dealerHand);
 }
+
 //initializing
 function init () {
   dealerScore = 0;
   playerScore = 0;
   playerHand = [];
   dealerHand = [];
+  gameResult.innerHTML = '';
   shuffleDeck(masterDeck);
   dealPlayerCards();
   playerScore = addCardValues(playerHand);
