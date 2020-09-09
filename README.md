@@ -1,4 +1,4 @@
-#blackjack
+Blackjack
 Project week 1
 
 Technologies Used:
@@ -6,7 +6,7 @@ Technologies Used:
 Javascript:
 - HTML
 - CSS
-source: imgur.com
+- source: imgur.com
 
 <a href="https://imgur.com/y608YA9"><img src="https://i.imgur.com/y608YA9.png" title="source: imgur.com" /></a>
 
